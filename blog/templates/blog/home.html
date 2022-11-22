@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-        <title>Django Blog - {{ title }}</title>
-    {% else %}
-        <title>Django Blog</title>
-    {% endif %}
-</head>
-<body>
+{% extends "blog/base.html" %}
+{% block content %}
     {% for wpis in wpisy %}
-    <h2>{{wpis.tytuł}}</h2>
-    <h3>By {{wpis.autor}} on {{wpis.data_posta}}</h3>
-    <P>{{wpis.zawartość}}</P>
+        <h2>{{wpis.tytuł}}</h2>
+        <h3>By {{wpis.autor}} on {{wpis.data_posta}}</h3>
+        <P>{{wpis.zawartość}}</P>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}
+
