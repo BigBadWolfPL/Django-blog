@@ -20,6 +20,11 @@ def moja(request):
 def kontakt(request):
     context = {
         'title': 'Kontakt', 
-        'dane_kontaktowe': ['GitHub: BigBadWolfPL', 'LindedIn: Robert Bielicki', 'Mail: robertbielickiwet@gmail.com', 'Tel: 504-113-035']
+        'dane_kontaktowe': [
+            'GitHub: BigBadWolfPL', 
+            'LindedIn: Robert Bielicki', 
+            'Mail: robertbielickiwet@gmail.com', 
+            'Tel: 504-113-035'
+            ]
     }
     return render(request, 'blog/kontakt.html', context)
