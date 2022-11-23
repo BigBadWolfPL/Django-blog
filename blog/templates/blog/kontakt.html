@@ -1,9 +1,10 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <div class="media-body">
-        <h2><a class="article-title">Kontakt</a></h2>
-        {% for line in dane_kontaktowe %}
-        <p class="article-content">{{ line }}</p>
-        {% endfor %}
+
+    <div class="well">
+        <h2>Kontakt</h2>
+            {% for line in dane_kontaktowe %}
+            <div class="well">{{ line }}</div>
+            {% endfor %}
     </div>
 {% endblock content %}
