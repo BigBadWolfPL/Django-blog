@@ -19,12 +19,12 @@
     color: #ffffff;
   }
   .bg-3 { 
-    background-color: #ffffff;
+    background-color: #bab5b5;
     color: #555555;
   }
   .container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
   </style>
 </head>
@@ -37,15 +37,15 @@
 </div>
 
 <div class="container-fluid bg-2 text-center">
-  <h3>Where To Find Me?</h3>
-  {% for line in dane_kontaktowe %}
-    <h4>{{ line }}</h4>
-  {% endfor %}
+
+  <h3>{{ user.username}}</h3>
+  <h3>{{ user.email }}</h3>
+
 </div>
 
 <div class="container-fluid bg-3 text-center">
-  <h3>###</h3>
-  <p>###</p>
+
+
 </div>
 
 </body>
