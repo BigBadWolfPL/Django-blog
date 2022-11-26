@@ -42,8 +42,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):         # Zachowane domyś
         messages.success(self.request, f'Post Successfully Created!')            
         return super().form_valid(form)                       # If you want to set it to the current logged in user you can override the form_valid method of the form and do it there
 
-    def get_success_url(self):                                # dodatkowo stworzyć metode get_absolute_url w models.py aby przekierować do strony nowego posta      
-        return reverse('blog-home')                           # lub tutaj metode get_success_url aby przekierowac do str głównej >>  bo wywala błąd o przekierowaniu
+    #def get_success_url(self):                                # dodatkowo stworzyć metode get_absolute_url w models.py aby przekierować do strony nowego posta      
+    #    return reverse('blog-home')                           # lub tutaj metode get_success_url aby przekierowac do str głównej >>  bo wywala błąd o przekierowaniu
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):   # Używa tego samego tamplatu co PostCreateView , dodatkowo UserPassesTestMixin aby edycja tylko przez autora posta
@@ -59,13 +59,13 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):   # U
         post = self.get_object()
         return self.request.user == post.author               # Można zrobić z if self.request.user == post.author: return True, else: False
 
-    def get_success_url(self):
-        return reverse('blog-home')
+    #def get_success_url(self):
+    #    return reverse('blog-home')
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/'                                         # Wystarczy success = '<adres_strony>' zamiast metody get_success_url
+    #success_url = '/'                                         # Wystarczy success = '<adres_strony>' zamiast metody get_success_url
         
     def test_func(self):                                      # Sprawdzenie czy osoba chcąca usunąć jest autorem.
         post = self.get_object()
@@ -73,9 +73,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
     
-    #def get_success_url(self):
-    #    messages.success(self.request, f'Post Deleted!')
-    #    return reverse('blog-home')
+    def get_success_url(self):
+        messages.success(self.request, f'Post Deleted!')
+        return reverse('blog-home')
 
 
 def about(request):
