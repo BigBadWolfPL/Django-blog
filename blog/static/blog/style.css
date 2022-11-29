@@ -3,9 +3,12 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
+    background-image: url("/../media/med.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h1, h2, h3, h4, h5, h6 {
     color: #444444;
   }
   
@@ -14,7 +17,8 @@ body {
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #747271;
+    opacity: 84%;
 
   }
   
@@ -29,13 +33,15 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
-  
+
   .content-section {
-    background: #ffffff;
+    background: #ecebeb;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
+    border: 6px outset #aa9696;
+    border-radius: 20px;
     margin-bottom: 20px;
+    opacity: 88%;
+
   }
   
   .article-title {
