@@ -6,12 +6,16 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin, 
     UserPassesTestMixin
 )
+
+from django.http import HttpResponse
+
 from django.views.generic import (
     ListView, 
     DetailView, 
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    TemplateView
 )
 
 
@@ -27,7 +31,7 @@ class PostListView(ListView):
     template_name = 'blog/home.html'                          # blog/post_list.html (error domyslna nazwa templatu post_list)  <app>/<model>_<viewtype>.html
     context_object_name = 'posts'                             # domyslna nazwa obiektu to'object'
     ordering = ['-date_posted']                               # - zmiana kolejności
-
+    paginate_by = 5
 
 class PostDetailView(DetailView):                             # Zachowane domyślne nazwy (w tamplacie nazwa zmiennej object)
     model = Post
@@ -82,5 +86,7 @@ def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
 
-def testowy(request):
-    return render(request, 'blog/testowytem.html')
+class GTemeView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'blog/tem.html'
+    context_object_name = 'object'
