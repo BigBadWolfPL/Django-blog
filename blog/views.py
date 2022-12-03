@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.mixins import (
     LoginRequiredMixin, 
@@ -32,6 +33,19 @@ class PostListView(ListView):
     context_object_name = 'posts'                             # domyslna nazwa obiektu to'object'
     ordering = ['-date_posted']                               # - zmiana kolejności
     paginate_by = 5
+
+
+class UserPostListView(ListView):
+    model = Post                                              # <----------
+    template_name = 'blog/user_posts.html'                          # blog/post_list.html (error domyslna nazwa templatu post_list)  <app>/<model>_<viewtype>.html
+    context_object_name = 'posts'                             # domyslna nazwa obiektu to'object'
+    #ordering = ['-date_posted']                               # - zmiana kolejności
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 class PostDetailView(DetailView):                             # Zachowane domyślne nazwy (w tamplacie nazwa zmiennej object)
     model = Post
@@ -82,11 +96,10 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return reverse('blog-home')
 
 
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
+def index(request):
+    return render(request, 'blog/index.html', {'title': 'About'})
 
 
 class GTemeView(LoginRequiredMixin, ListView):
     model = Post
-    template_name = 'blog/tem.html'
-    context_object_name = 'object'
+    template_name = 'blog/index.html'

@@ -3,6 +3,9 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
+    background-image: url("/../media/clin.webp");
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -15,6 +18,7 @@ body {
   
   .bg-steel {
     background-color: #5f788a;
+    opacity: 79%;
 
   }
   
@@ -34,8 +38,23 @@ body {
     background: #ffffff;
     padding: 10px 20px;
     border: 1px solid #dddddd;
-    border-radius: 3px;
-    margin-bottom: 20px;
+    border-radius: 34px;
+    margin-bottom: 15px;
+    opacity: 85%;
+  }
+
+  .content-section2 {
+    background: #f9fafd;
+    padding: 10px 20px;
+    border-style: inherit;
+    border-radius: 34px;
+    margin-bottom: 15px;
+    opacity: 85%;
+    display: grid;
+  }
+  p.ex2 {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
   }
   
   .article-title {
