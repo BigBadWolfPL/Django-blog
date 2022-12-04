@@ -7,9 +7,6 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin, 
     UserPassesTestMixin
 )
-
-from django.http import HttpResponse
-
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -18,14 +15,14 @@ from django.views.generic import (
     DeleteView,
     TemplateView
 )
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger # do functionBasedView
+from django.contrib.auth.forms import UserCreationForm
 
 
-#def home(request):
-#    context = {
-#        'posts': Post.objects.all()                          # <----------
-#    }
-#    return render(request, 'blog/home.html', context)
 
+
+
+##################################################################
 
 class PostListView(ListView):
     model = Post                                              # <----------
@@ -33,6 +30,30 @@ class PostListView(ListView):
     context_object_name = 'posts'                             # domyslna nazwa obiektu to'object'
     ordering = ['-date_posted']                               # - zmiana kolejności
     paginate_by = 5
+
+
+def to_samo_co_posts_list_view(request):                      # <----------
+    posts = Post.objects.all().order_by('-date_posted')
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(posts, 5)
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/to_samo_co_posts_list_view.html', {'posts': posts})
+
+#def home(request):                                           # <----------
+#    context = {
+#        'posts': Post.objects.all().order_by('-date_posted')                         
+#    }
+#    return render(request, 'blog/home.html', context)
+
+##################################################################
 
 
 class UserPostListView(ListView):
@@ -100,6 +121,14 @@ def index(request):
     return render(request, 'blog/index.html', {'title': 'About'})
 
 
-class GTemeView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'blog/index.html'
+#class GTemeView(LoginRequiredMixin, ListView):
+#    model = Post
+#    template_name = 'blog/index.html'
+
+
+class TestTemplateView(TemplateView):
+    template_name = 'blog/test.html'
+
+
+
+
