@@ -3,7 +3,7 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
-    background-image: url("/../media/clin.webp");
+    background-image: url("/../media/longgreen.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -17,8 +17,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .bg-steel {
-    background-color: #747271;
-    opacity: 92%;
+    background-color: #088632;
+    opacity: 90%;
 
   }
   
@@ -35,13 +35,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .content-section {
-    background: #ecebeb;
+    background: #c3ffde;
     padding: 10px 20px;
-    border: 6px outset #aa9696;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    opacity: 87%;
+    border: 3px outset #c4ffbf;
+    border-radius: 5px;
+    margin-bottom: 17px;
+    opacity: 95%;
 
+  }
+
+  .content-section2 {
+    background: #c3ffde;
+    padding: 10px 20px;
+    border: 3px outset #c4ffbf;
+    border-radius: 5px;
+    margin-bottom: 17px;
+    opacity: 87%;
+    position: fixed;
+  
   }
   
   .article-title {
