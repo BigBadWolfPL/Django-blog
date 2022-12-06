@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+   {% if wyszukanie %}
+     <h1>Wyszukiwanie dla: <b> {{ wyszukanie }}</b></h1>
+     {{ posty }}
+
+   {% else %}
+      <h1>Nie podano zdanej wartości do wyszukania</h1>
+   {% endif %}
+
+{% endblock content %}
+
