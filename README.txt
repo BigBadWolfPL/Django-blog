@@ -1,1 +1,0 @@
-pierwszy projekt w django
