@@ -74,7 +74,7 @@ class PostDetailView(DetailView):                             # Zachowane domyś
 
 class PostCreateView(LoginRequiredMixin, CreateView):         # Zachowane domyślne nazwy
     model = Post                                              # Dla Create oczekiwana nazwa obiektu to 'form'
-    fields = ['title', 'content']                             # LoginRequiredMixin nowe posty tylko przez zalogowanych
+    fields = ['title', 'content', 'image']                             # LoginRequiredMixin nowe posty tylko przez zalogowanych
     
     def form_valid(self, form):                               # Your PostCreateView creates instances of Post and you have set fields = ['title','content'] meaning only these fields would show up in the form. 
         form.instance.author = self.request.user              # But you have a field author which is non-nullable and without a default, hence you need to set a value for this field too.
